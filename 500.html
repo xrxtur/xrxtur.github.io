@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - خطای داخلی سرور | DarkCity VPN</title>
+    <meta name="description" content="خطای داخلی سرور رخ داده است. DarkCity VPN">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --secondary: #f59e0b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gradient: linear-gradient(135deg, #8b5cf6, #6366f1);
+            --gradient-hover: linear-gradient(135deg, #7c3aed, #4f46e5);
+            --error-color: #475569; /* خاکستری تیره برای 500 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 3rem;
+        }
+
+        .error-code {
+            font-size: 10rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--error-color), #1e293b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin: 0.5rem 0;
+            animation: pulse 2s infinite;
+        }
+
+        .error-title {
+            font-size: 2.4rem;
+            margin: 1rem 0;
+            color: white;
+        }
+
+        .error-desc {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            line-height: 1.8;
+        }
+
+        .bot-illustration {
+            margin: 2rem 0 3rem;
+            animation: float 6s ease-in-out infinite;
+            width: 220px;
+            height: 220px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--gradient-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-telegram {
+            background: #0088cc;
+            color: white;
+        }
+
+        .btn-telegram:hover {
+            background: #0077b5;
+            transform: translateY(-5px);
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 992px) {
+            .error-code { font-size: 8rem; }
+            .logo { font-size: 2.4rem; }
+            .logo i { font-size: 2.6rem; }
+            .error-title { font-size: 2.1rem; }
+            .bot-illustration { width: 200px; height: 200px; }
+        }
+
+        @media (max-width: 768px) {
+            .error-code { font-size: 6.5rem; }
+            .logo { font-size: 2.2rem; }
+            .error-title { font-size: 1.9rem; }
+            .error-desc { font-size: 1.2rem; }
+            .bot-illustration { width: 180px; height: 180px; margin: 1.5rem 0 2.5rem; }
+            .btn { padding: 0.9rem 2rem; font-size: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .error-code { font-size: 5rem; }
+            .logo { font-size: 2rem; }
+            .logo i { font-size: 2.3rem; }
+            .error-title { font-size: 1.7rem; }
+            .error-desc { font-size: 1.1rem; padding: 0 1rem; }
+            .bot-illustration { width: 160px; height: 160px; }
+            .buttons { flex-direction: column; width: 100%; }
+            .btn { width: 80%; max-width: 300px; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <div class="logo">
+            <i class="ri-shield-keyhole-line"></i>
+            DarkCity VPN
+        </div>
+
+        <h1 class="error-code">500</h1>
+        <h2 class="error-title">خطای داخلی سرور!</h2>
+        <p class="error-desc">
+            متاسفانه مشکلی در سرور پیش آمده و درخواست شما پردازش نشد.<br>
+            تیم فنی در حال رفع مشکل است — چند لحظه دیگر دوباره امتحان کنید.
+        </p>
+
+        <div class="bot-illustration">
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="botGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#475569;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <circle cx="200" cy="200" r="180" fill="url(#botGradient)" opacity="0.15"/>
+                <circle cx="200" cy="150" r="60" fill="url(#botGradient)"/>
+                <rect x="140" y="210" width="120" height="140" rx="25" fill="url(#botGradient)"/>
+                <!-- چشم‌های X شکل (خراب) -->
+                <path d="M165 135 L185 155 M185 135 L165 155" stroke="white" stroke-width="5"/>
+                <path d="M215 135 L235 155 M235 135 L215 155" stroke="white" stroke-width="5"/>
+                <!-- دهن ناراحت -->
+                <path d="M175 180 Q200 160 225 180" stroke="white" stroke-width="4" fill="none"/>
+                <!-- جرقه و دود -->
+                <circle cx="130" cy="120" r="8" fill="#f59e0b" opacity="0.8">
+                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="270" cy="130" r="10" fill="#ef4444" opacity="0.7">
+                    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite"/>
+                </circle>
+                <rect x="130" y="350" width="25" height="40" rx="8" fill="url(#botGradient)"/>
+                <rect x="245" y="350" width="25" height="40" rx="8" fill="url(#botGradient)"/>
+                <path d="M200 90 L200 60 L230 80 L200 90" fill="url(#botGradient)"/>
+            </svg>
+        </div>
+
+        <div class="buttons">
+            <a href="https://t.me/DarkCityShop_Bot" target="_blank" class="btn btn-telegram">
+                <i class="ri-telegram-line"></i> ورود به ربات
+            </a>
+            <a href="/" class="btn btn-primary">
+                <i class="ri-home-line"></i> بازگشت به خانه
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#475569" }, /* خاکستری تیره برای تم 500 */
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#475569",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out"
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+</html>
