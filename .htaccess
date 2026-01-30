@@ -1,0 +1,10 @@
+php_value date.timezone Asia/Tehran
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+ErrorDocument 400 /400.html
+ErrorDocument 401 /401.html
+ErrorDocument 500 /500.html
+ErrorDocument 503 /503.html
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
